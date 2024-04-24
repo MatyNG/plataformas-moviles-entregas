@@ -1,0 +1,37 @@
+.titulo{
+    text-align: center;
+}
+
+p#primer-parrafo.importante.parrafo{
+    font-family: serif;
+    background-color: #cee;
+}
+
+.novelas.parrafo{
+    font-family: serif;
+}
+
+p.fuente.parrafo{
+    font-family: serif;
+}
+
+#primer-parrafo em{
+    color: #933;
+}
+
+a{
+    outline: 1px solid #333
+}
+
+p.fuente.parrafo{
+    opacity: 100% !important;
+}
+
+body p.fuente.parrafo:not(.especifico){
+    color: #000 !important;
+}
+
+.complicado{
+    font-weight: bold;
+    color: #c62;
+}
