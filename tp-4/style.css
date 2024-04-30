@@ -1,0 +1,33 @@
+@media (min-width : 400px){
+    body{
+        background-color: rgb(40,60,80) !important;
+    }
+}
+@media (max-width : 800px){
+    h1{
+        text-align: center;
+    }
+}
+@media (orientation: landscape){
+    article{
+        max-width:50ch;
+    }
+}
+@media (orientation: portrait){
+    h1{
+        max-width: 200px;
+        background-color: yellow;
+    }
+}
+
+@media print{
+    p{
+        font-family: serif;
+    }
+}
+@media (prefers-color-sheme:light){
+    h1,body{
+        background-color: #ddd;
+        color:#111;
+    }
+}
