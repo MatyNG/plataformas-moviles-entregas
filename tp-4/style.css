@@ -28,7 +28,7 @@
 @media (prefers-color-sheme:light){
     h1,body{
         background-color: #ddd;
-        color:#111;
+        color:#222;
     }
 }
 @media not all and(hver: hover)
