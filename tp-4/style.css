@@ -27,7 +27,7 @@
 }
 @media (prefers-color-sheme: light){
     body, h1 {
-        background-color: #ddd;
+        background-color: #DDD;
         color:#111;
     }
 }
