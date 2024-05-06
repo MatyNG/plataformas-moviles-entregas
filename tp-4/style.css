@@ -25,14 +25,34 @@
         font-family: serif;
     }
 }
-@media (prefers-color-sheme:light){
+@media (prefers-color-sheme: light){
     h1,body{
         background-color: #ddd;
-        color:#222;
+        color:#111;
     }
 }
-@media not all and(hver: hover)
+@media not all and (hover: hover)
 a{
     background-color: #212;
     padding: 2px 5px;
+}
+
+@media screen and (min-width: 800px) and (max-width: 900px) {
+
+    img {
+        display: none;
+        
+    }
+}
+@media screen and (min-width: 200px) and (max-width: 400px){
+    img{
+        height: 400px;
+        object-fit: cover;
+        
+    }
+}
+@media (min-resolution: 20dppx){
+    article{
+        background-color: #667;
+    }
 }
