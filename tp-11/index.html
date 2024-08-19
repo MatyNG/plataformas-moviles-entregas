@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TP11 - Editor de Texto - DOM y JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container my-1 my-sm-2 my-md-4 my-lg-5">
+        <h1>Editor de Texto</h1>
+        <div class="card">
+            <div class="card-body">
+                <h2>Texto</h2>
+
+                <p class="texto" id="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum 
+                    auctor libero, vel imperdiet est. Etiam blandit facilisis ex, nec cursus metus pharetra 
+                    quis. Fusce imperdiet nisl nibh, ac aliquet ante elementum vitae.</p>
+
+                <hr class="hr">
+
+                <h2>Opciones de Formato</h2>
+                <div class="row">
+                    <div class="col-12 col-md-4 my-1">
+                        <button id="btn-negrita" class="btn d-block w-100 btn-primary" data-formato="negrita">
+                            Bold (Negrita)
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 my-1">
+                        <button id="btn-cursiva" class="btn d-block w-100 btn-primary" data-formato="cursiva">
+                            Italic (Cursiva)
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 my-1">
+                        <button id="btn-subrayado" class="btn d-block w-100 btn-primary" data-formato="subrayado">
+                            Underline (Subrayado)
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 my-1">
+                        <button id="btn-color" class="btn d-block w-100 btn-primary" data-formato="color">
+                            Cambiar color
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12 col-md-6 my-1">
+                        <input id="input-texto" type="text" placeholder="Nuevo Texto">
+                        <button id="btn-editar" class="btn btn-primary" data-formato="editar">Editar Texto</button>
+                    </div>
+                    <div class="col-12 col-md-6 my-1">
+                        Tamaño del texto <input id="input-tamano" type="range" min="10" max="40" value="16">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        /**
+         * funcionNegrita()
+         * esta función se va a llamar cuando el usuario selecciona la opción Bold (negrita).
+         */
+        function funcionNegrita() {
+            let botonNegrita = document.querySelector("btn-negrita");
+            let elementoParrafo = document.querySelector("p#texto.texto");
+            if (elementoParrafo.style.fontWeight == "bold"){
+                elementoParrafo.style.fontWeight = null;
+                botonNegrita.innerText = "Bold (Negrita)";
+            }else{
+                elementoParrafo.style.fontWeight = "bold";
+                botonNegrita.innerText = "Bold (Desactivar)";
+            }
+        }
+
+        /**
+         * funcionCursiva()
+         * esta función se va a llamar cuando el usuario selecciona la opción Italic (Cursiva).
+         */
+        function funcionCursiva() {
+            let botonCursiva = document.querySelector("btn-cursiva");
+            let elementoParrafo= document.querySelector("p.texto");
+            if (elementoParrafo.style.fontStyle == "italic"){
+                elementoParrafo.style.fontStyle = null;
+                botonCursiva.innerText = "Italic (Cursiva)";
+            }else{
+                elementoParrafo.style.fontStyle = "italic";
+                botonCursiva.innerText = "Italic (Desactivar)";
+            }
+        }
+
+        /**
+         * funcionSubrayado()
+         * esta función se va a llamar cuando el usuario selecciona la opción Underline (Subrayado).
+         */
+        function funcionSubrayado() {
+            let botonSubrayado = document.querySelector("btn-subrayado");
+            if (texto.classList.toggle("text-decoration-underline")){
+                botonSubrayado.innerText = "Underline (Desactivar)";
+            }else{
+                botonSubrayado.innerText = "Underline (Subrayado)";
+            }
+        }
+
+        /**
+         * funcionColor()
+         * esta función se va a llamar cuando el usuario selecciona la opción Cambiar color.
+         */
+        function funcionColor() {
+            let botonSubrayado = document.querySelector("btn-color");
+            if (texto.classList.toggle("text-warning")){
+                botonSubrayado.innerText = "Cambiar color (Desactivar)";
+            }else{
+                botonSubrayado.innerText = "Cambiar color";
+            }
+        }
+        
+        /**
+         *funcionEditarTexto()
+         * esta función se va a llamar cuando el usuario selecciona la opción Editat Texto.
+         */
+        function funcionEditarTexto() {
+            let nuevoTexto = document.getElementById("input-texto").value;
+            let texto = document.getElementById("texto");
+            texto.innerText = nuevoTexto;
+        }
+
+
+         /**
+         * funcionTamano()
+         * esta función se va a llamar cuando el usuario cambia el tamaño del texto.
+         */
+        function funcionTamano() {
+            let inputTamano = document.getElementById("input-tamano");
+            let texto = document.getElementById("texto");
+            texto.style.fontSize = inputTamano.value + "px";
+        }
+        
+        
+
+
+        function handlerBoton(e) {
+            const funcionBoton = e.target.dataset.formato;
+            switch (funcionBoton) {
+                case 'negrita':
+                    funcionNegrita();
+                    break;
+                case 'cursiva':
+                    funcionCursiva();
+                    break;
+                case 'subrayado':
+                    funcionSubrayado();
+                    break;
+                case 'color':
+                    funcionColor();
+                    break;
+                case 'editar':
+                    funcionEditarTexto();
+                    break;
+            }
+        }
+        document.querySelectorAll('button.btn').forEach(e => e.addEventListener('click', handlerBoton));
+        document.getElementById("input-tamano").addEventListener("input", funcionTamano);
+    </script>
+</body>
+</html>
